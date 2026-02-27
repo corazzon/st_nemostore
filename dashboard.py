@@ -7,7 +7,6 @@ import json
 import re
 from datetime import datetime, timezone
 import plotly.express as px
-import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 
 # 페이지 설정
@@ -305,7 +304,7 @@ def tab_deal_finder(df):
                 with cols[j]:
                     with st.container(border=True):
                         img_url = item.get('previewPhotoUrl')
-                        if isinstance(img_url, str) and img_url.startswith('http'):
+                        if pd.notna(img_url) and isinstance(img_url, str) and img_url.startswith('http'):
                             st.image(img_url, use_container_width=True)
                         else: st.info("이미지 없음")
                         st.markdown(f"### {item['title'] or '제목 없음'}")
@@ -332,7 +331,7 @@ def tab_detail(df):
     c1, c2 = st.columns([1, 1])
     with c1:
         img_url = item.get('previewPhotoUrl')
-        if isinstance(img_url, str) and img_url.startswith('http'):
+        if pd.notna(img_url) and isinstance(img_url, str) and img_url.startswith('http'):
             st.image(img_url, use_container_width=True)
         else: st.info("이미지 없음")
             
