@@ -8,7 +8,6 @@ import re
 from datetime import datetime, timezone
 import plotly.express as px
 import matplotlib.pyplot as plt
-import koreanize_matplotlib
 from bs4 import BeautifulSoup
 
 # 페이지 설정
